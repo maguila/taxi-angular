@@ -1,6 +1,42 @@
-<p>login works!</p>
+
+<div class="login-background flex justify-content-center align-items-center mt-8">
+        
+        <div class="surface-card p-4 border-round shadow-2 w-full md:w-6 mr-1 ml-1">
+            
+
+            <div class="flex justify-content-center align-items-center mb-4">
+                <div class="circle-icon">
+                    <i class="pi pi-user"></i>
+                </div>
+            </div>
 
 
-<p-button label="dsasd">
+            <div class="flex flex-column gap-1 mb-3">
+                <label for="username">Usuario</label>
+                <input 
+                    pInputText 
+                    id="username" 
+                    aria-describedby="username-help" 
+                    [(ngModel)]="usuario" />
+            </div>
+    
+    
+            <div class="flex flex-column gap-2">
+                <label for="username">Contraseña</label>
+                <input 
+                    pInputText 
+                    id="username" 
+                    aria-describedby="username-help" 
+                    [(ngModel)]="password" />
+            </div>        
 
-</p-button>
+
+            <div class="flex flex-column mt-4">
+                <p-button label="Acceder" styleClass="w-full" />
+            </div>
+    
+    
+        </div>
+        
+
+    </div>
