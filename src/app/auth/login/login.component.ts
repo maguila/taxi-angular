@@ -5,13 +5,16 @@ import { ButtonModule } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
 import { InputTextModule } from 'primeng/inputtext';
 import { PanelModule } from 'primeng/panel';
+import { AuthService } from '../../service/auth.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule , ButtonModule, DividerModule, InputTextModule, PanelModule],
+  imports: [HttpClientModule, CommonModule, FormsModule , ButtonModule, DividerModule, InputTextModule, PanelModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  styleUrl: './login.component.scss',
+  providers: [AuthService]
 })
 export class LoginComponent implements OnInit{
 
@@ -19,9 +22,9 @@ export class LoginComponent implements OnInit{
   password?:string
   
   constructor(private renderer: Renderer2,
-    @Inject(PLATFORM_ID) private platformId: Object 
-  ){    
-  }
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private authService:AuthService
+  ){}
 
   ngOnInit(): void {
     // Verifica si estamos en el entorno del navegador antes de acceder al document
@@ -30,6 +33,14 @@ export class LoginComponent implements OnInit{
     }
     
   }
+
+  
+  login(){
+    this.authService.login('','').subscribe(response =>{
+      debugger
+    })
+  }
+  
 
 
 }
