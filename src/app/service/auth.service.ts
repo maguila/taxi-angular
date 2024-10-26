@@ -23,8 +23,4 @@ export class AuthService {
   isAuthenticated() {
     return this.authenticated()
   }
-
-  public getPrecios(){
-
-  }
 }

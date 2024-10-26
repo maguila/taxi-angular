@@ -1,6 +1,40 @@
-<p>precios-list works!</p>
+<h2 class="text-red-50">Tarifario - Futrono</h2>
+<p-button icon="pi pi-plus" label="Crear Registro" severity="success" (click)="visible=true" styleClass="w-full"></p-button>
+
+<input pInputText class="flex-auto w-full mt-2" autocomplete="off" (input)="filterChange($event)" placeholder="Ingrese Búsqueda"/>
+
+<p-card *ngFor="let precio of preciosArray" styleClass="mb-2 mt-3 cursor-pointer">
+
+    <div class="grid p-0" (click)="visible=true">
+        <div class="col p-0 pl-2 pt-2 text-base">
+            <i class="pi pi-car mr-2"></i>
+            <span>{{precio.nombre}} </span>
+        </div>
+        <div class="col-4 p-0 text-right pr-2 pt-1">
+            <span class="text-xl font-bold">$ {{precio.precio | number}}</span>            
+        </div>        
+    </div>
+
+</p-card>
 
 
-<p *ngFor="let precio of preciosArray">
-    {{precio.nombre}}
-</p>
+
+<p-dialog header="Ingrese un Nuevo Precio" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }" [draggable]="false" [dismissableMask]="true">
+    
+    <div class="flex align-items-center gap-3 mb-3">
+        <label for="nombreIT" class="font-semibold w-6rem">Nombre</label>
+        <input pInputText id="nombreIT" class="flex-auto" autocomplete="off" />
+    </div>
+    <div class="flex align-items-center gap-3 mb-5">
+        <label for="precioIT" class="font-semibold w-6rem">Precio</label>
+        <input pInputText pKeyFilter="int" id="precioIT" class="flex-auto" autocomplete="off" />
+    </div>
+    <div class="flex justify-content-end gap-2">
+        <p-button label="Cancelar" severity="secondary" (onClick)="visible = false" />
+        <p-button label="Guardar" (onClick)="visible = false" />
+    </div>
+</p-dialog>
+
+
+
+

@@ -6,14 +6,13 @@ import { DividerModule } from 'primeng/divider';
 import { InputTextModule } from 'primeng/inputtext';
 import { PanelModule } from 'primeng/panel';
 import { AuthService } from '../../service/auth.service';
-import { HttpClientModule } from '@angular/common/http';
 import { PasswordModule } from 'primeng/password';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [HttpClientModule, CommonModule, FormsModule , ButtonModule, DividerModule, InputTextModule, PanelModule, PasswordModule],
+  imports: [CommonModule, FormsModule ,ButtonModule, DividerModule, InputTextModule, PanelModule, PasswordModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
   providers: [AuthService]
@@ -25,17 +24,10 @@ export class LoginComponent implements OnInit{
 
   private router = inject(Router);
   
-  constructor(private renderer: Renderer2,
-    @Inject(PLATFORM_ID) private platformId: Object,
-    private authService:AuthService
-  ){}
+  constructor(private authService:AuthService){}
 
-  ngOnInit(): void {
-    // Verifica si estamos en el entorno del navegador antes de acceder al document
-    if (isPlatformBrowser(this.platformId)) {
-      this.renderer.addClass(document.body, 'body-background');      
-    }
-    
+  ngOnInit(): void {    
+
   }
 
   
