@@ -1,5 +1,5 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { Component, Inject, OnInit, PLATFORM_ID, Renderer2 } from '@angular/core';
+import { Component, inject, Inject, OnInit, PLATFORM_ID, Renderer2 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
@@ -7,19 +7,23 @@ import { InputTextModule } from 'primeng/inputtext';
 import { PanelModule } from 'primeng/panel';
 import { AuthService } from '../../service/auth.service';
 import { HttpClientModule } from '@angular/common/http';
+import { PasswordModule } from 'primeng/password';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [HttpClientModule, CommonModule, FormsModule , ButtonModule, DividerModule, InputTextModule, PanelModule],
+  imports: [HttpClientModule, CommonModule, FormsModule , ButtonModule, DividerModule, InputTextModule, PanelModule, PasswordModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
   providers: [AuthService]
 })
 export class LoginComponent implements OnInit{
 
-  usuario?:string
+  username?:string
   password?:string
+
+  private router = inject(Router);
   
   constructor(private renderer: Renderer2,
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -36,8 +40,8 @@ export class LoginComponent implements OnInit{
 
   
   login(){
-    this.authService.login('','').subscribe(response =>{
-      debugger
+    this.authService.login(this.username!,this.password!).subscribe(response =>{
+      this.router.navigate(['/precios']);
     })
   }
   

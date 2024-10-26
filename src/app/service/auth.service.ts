@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
@@ -10,12 +10,14 @@ export class AuthService {
 
   private authenticated = signal(false)
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) { 
+    
+  }
 
   login(username: string, password: string) : Observable<any>{    
-    let url = environment.API_URL + '/precios'
+    let url = environment.API_URL + '/login'
     this.authenticated.set(true)
-    return this.http.get(url)
+    return this.http.post(url, {username:username, password:password})
   }
 
   isAuthenticated() {

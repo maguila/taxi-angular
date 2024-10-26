@@ -17,17 +17,16 @@
                     pInputText 
                     id="username" 
                     aria-describedby="username-help" 
-                    [(ngModel)]="usuario" />
+                    [(ngModel)]="username" />
             </div>
     
     
             <div class="flex flex-column gap-2">
                 <label for="username">Contraseña</label>
-                <input 
-                    pInputText 
-                    id="username" 
-                    aria-describedby="username-help" 
-                    [(ngModel)]="password" />
+                <div class="p-field w-full">
+                    <p-password [(ngModel)]="password" [feedback]="false" styleClass="w-full"/>        
+                </div>
+                
             </div>        
 
 
