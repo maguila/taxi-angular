@@ -1,7 +1,7 @@
 <h2 class="text-red-50">Tarifario - Futrono</h2>
 <p-button icon="pi pi-plus" label="Crear Registro" severity="success" (click)="visible=true" styleClass="w-full"></p-button>
 
-<input pInputText class="flex-auto w-full mt-2" autocomplete="off" (input)="filterChange($event)" placeholder="Ingrese Búsqueda"/>
+<input pInputText class="flex-auto w-full mt-2 mb-4" autocomplete="off" (input)="filterChange($event)" placeholder="Ingrese Búsqueda"/>
 
 <p-card *ngFor="let precio of preciosArray" styleClass="mb-2 mt-3 cursor-pointer">
 

@@ -1,3 +1,3 @@
 export const environment = {    
-    API_URL : 'https://mignet.cl'
+    API_URL : 'https://apitaxi.mignet.cl'
 };

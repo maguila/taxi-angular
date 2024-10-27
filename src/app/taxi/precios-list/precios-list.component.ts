@@ -40,10 +40,7 @@ export class PreciosListComponent implements OnInit{
         this.preciosArray = data      
       })      
     }else{
-      let filterList = 
-      this.preciosArray.filter(precio => 
-        precio.nombre!.toLowerCase().includes(value.toLowerCase())
-      )      
+      let filterList = this.preciosArray.filter(precio => precio.nombre!.toLowerCase().includes(value.toLowerCase()) )      
       this.preciosArray = filterList
     }
 
